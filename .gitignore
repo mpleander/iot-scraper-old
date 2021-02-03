@@ -128,8 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Python dmp files
+README.md.save
+
 # vscode
 .vscode
 
 # Secrets
-conf.cfg
+conf.json
+conf_copy.sh

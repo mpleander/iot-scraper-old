@@ -1,0 +1,7 @@
+black
+pytest
+python3-particle==0.1
+isort
+mariadb
+typing
+pylint
