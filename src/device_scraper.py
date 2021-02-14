@@ -1,11 +1,14 @@
 import json
-import requests 
-import mariadb
 import sys
-from config import Cfg
+from typing import Any, Dict
+
+import mariadb
+import requests
 from particle.particle import Particle
-from typing import Dict, Any
+
+from config import Cfg
 from dbbase import Db
+
 
 class DeviceScraper(Cfg):
     """
@@ -32,28 +35,13 @@ class DeviceScraper(Cfg):
 
         request_url = url + ext_device_id + "/measure/?access_token=" + access_token
         response:Dict[str, Any] = json.loads(requests.get(request_url).text)
+        
+        device_var = json.loads(response["result"])
+        return device_var
+
     
-        return response
-
-
 
 
         
 
-    # Get Cursor
-    # cur = conn.cursor()
-    # cur.execute("INSERT INTO devices (id) Values ()")
-    # cur.execute("commit;")
 
-
-
-
-if __name__ == "__main__":
-    # SCRAPER = DeviceScraper()
-    # DEVICE = SCRAPER._get_device()
-    # print(DEVICE)
-
-    SCRAPER = DeviceScraper()
-    RESULT = SCRAPER._read_device_var("climate-logger-01")
-    print(RESULT)
-    print(type(RESULT))

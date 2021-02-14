@@ -1,7 +1,8 @@
-black
-pytest
+black==20.8b1
+pytest==6.2.2
 python3-particle==0.1
-isort
-mariadb
-typing
-pylint
+isort==5.7.0
+mariadb==1.0.5
+typing==3.7.4.3
+pylint==2.6.0
+APScheduler==3.7.0
