@@ -1,0 +1,14 @@
+{
+  "user":"<databaseuser>",
+  "password":"<databasepass",
+  "host":"<database host ip>",
+  "port":"<database port>",
+  "rawzone":
+    {
+      "database":"homesysraw"
+    },
+  "goldzone": 
+    {
+      "database":"homesysgold"
+    }
+}
