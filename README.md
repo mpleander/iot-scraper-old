@@ -15,6 +15,12 @@ Installation Guidelines:
 3) Run pip install -r requirements.txt
 4) Install MariaDB drivers on Ubuntu Operating system (see Instructions: Install MariaDB drivers)
 
+
+Running Container
+1) Ensure ports open (see Dockerfile)
+2) Mount config file with name conf.json... content can be seen in the dummy file called conf_dummy.json
+
+
 Instructions:
 *** conf_copy.sh (optional) ***
 If you add a shell script called conf_copy.sh containing containing bash scripts copying 
