@@ -12,16 +12,17 @@ scraper = DeviceScraper()
 db = Db()
 
 
-def climate_logger_01():
+def climate_logger(device_name: str):
+    "Logging climate data based on device name"
     try:
-        print(datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S") + " climate-logger-01")
-        result: Dict[str, Any] = scraper._read_device_var("climate-logger-01")
-        ext_device_id = Db().get_device_data_by_name("climate-logger-01")[
-            "ext_device_id"
-        ]
+        print(datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S") + " " + device_name)
+        result: Dict[str, Any] = scraper._read_device_var(device_name)
+        ext_device_id: str = Db().get_device_data_by_name(device_name)["ext_device_id"]
         timestamp: str = result["timestamp"]
         temperature: float = result["temperature"]
         humidity: float = result["humidity"]
+        print(device_name + " " + str(temperature))
+        print(device_name + " " + str(humidity))
         db.write_climate_logger_device_data(
             ext_device_id, timestamp, temperature, humidity
         )
@@ -34,7 +35,10 @@ def climate_logger_01():
 
 scheduler = BlockingScheduler()
 scheduler.add_job(
-    climate_logger_01, CronTrigger.from_crontab("0 * * * *")
+    climate_logger, CronTrigger.from_crontab("* * * * *"), ["climate-logger-01"]
 )
-# scheduler.add_job(climate_logger_01, 'interval', minutes=1)
+scheduler.add_job(
+    climate_logger, CronTrigger.from_crontab("* * * * *"), ["climate-logger-02"]
+)
+
 scheduler.start()
