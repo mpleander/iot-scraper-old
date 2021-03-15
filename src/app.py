@@ -35,10 +35,10 @@ def climate_logger(device_name: str):
 
 scheduler = BlockingScheduler()
 scheduler.add_job(
-    climate_logger, CronTrigger.from_crontab("* * * * *"), ["climate-logger-01"]
+    climate_logger, CronTrigger.from_crontab("0 * * * *"), ["climate-logger-01"]
 )
 scheduler.add_job(
-    climate_logger, CronTrigger.from_crontab("* * * * *"), ["climate-logger-02"]
+    climate_logger, CronTrigger.from_crontab("0 * * * *"), ["climate-logger-02"]
 )
 
 scheduler.start()
