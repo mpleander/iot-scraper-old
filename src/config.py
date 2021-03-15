@@ -23,13 +23,9 @@ class Cfg:
         Check if config file exist.
         if not try to copy the copy conf.json into repo.
         """
-
         response: bool = os.path.isfile("conf.json")
 
-        if response == False and os.path.isfile("conf_copy.sh"):
-            os.system("sh conf_copy.sh")
-
-        elif response == False:
+        if response == False:
             raise FileNotFoundError
 
         return "conf.json"

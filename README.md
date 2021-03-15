@@ -18,13 +18,12 @@ Installation Guidelines:
 
 Running Container
 1) Ensure ports open (see Dockerfile)
-2) Mount config file with name conf.json... content can be seen in the dummy file called conf_dummy.json
+2) Mount config file with name conf.json in container root... 
+   Content can be seen in the dummy file called conf_dummy.json
+
 
 
 Instructions:
-*** conf_copy.sh (optional) ***
-If you add a shell script called conf_copy.sh containing containing bash scripts copying 
-the config file to the repo, the config.py will execute that before failing
 
 *** Install MariaDB drivers ***
 To install MariaDB sql drivers follow below instructions.
