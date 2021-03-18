@@ -92,7 +92,7 @@ class Db(Cfg):
         cur.execute(query)
         r = cur.fetchone()  # TO-DO: typing this tuple
 
-        d = {
+        d: dict[str:str] = {
             "name": r[1],
             "brand": r[2],
             "model": r[3],

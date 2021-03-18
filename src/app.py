@@ -4,7 +4,6 @@ from typing import Any, Dict
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-from src.config import Cfg
 from src.dbbase import Db
 from src.device_scraper import DeviceScraper
 
