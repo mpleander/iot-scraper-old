@@ -11,6 +11,12 @@ scraper = DeviceScraper()
 db = Db()
 
 
+def scheduled_job():
+    climate_logger("climate-logger-01")
+    climate_logger("climate-logger-02")
+
+
+
 def climate_logger(device_name: str):
     "Logging climate data based on device name"
     try:
@@ -34,10 +40,6 @@ def climate_logger(device_name: str):
 
 scheduler = BlockingScheduler()
 scheduler.add_job(
-    climate_logger, CronTrigger.from_crontab("0 * * * *"), ["climate-logger-01"]
-)
-scheduler.add_job(
-    climate_logger, CronTrigger.from_crontab("0 * * * *"), ["climate-logger-02"]
-)
+    scheduled_job, CronTrigger.from_crontab("0 * * * *"))
 
 scheduler.start()
